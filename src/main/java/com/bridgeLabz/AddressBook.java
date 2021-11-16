@@ -10,9 +10,10 @@ public class AddressBook {
    And Entering The Contact Details By Using Scanner Class
    And Printing The Contact Details Of Person
     */
-
+	ContactDetails person = new ContactDetails();
     List<ContactDetails> contactDetailsList = new ArrayList<ContactDetails>();
     Scanner scanner = new Scanner(System.in);
+    
     public void addContact() {
         System.out.println("Enter the number of contacts you want to enter");
         int number = scanner.nextInt();
@@ -22,7 +23,6 @@ public class AddressBook {
         }
     }
     public void writeContact() {
-        ContactDetails person = new ContactDetails();
         System.out.println("Enter First Name : ");
         String firstName = scanner.next();
         System.out.println("Enter Last Name : ");
@@ -41,7 +41,7 @@ public class AddressBook {
         String emailId = scanner.next();
         person = new ContactDetails(firstName, lastName, address, city, state, zipCode, mobileNumber, emailId);
         contactDetailsList.add(person);
-        printContact();
+        
     }
 
     /*
@@ -58,6 +58,7 @@ public class AddressBook {
         for (int i = 0; i < contactDetailsList.size(); i++) {
             String name = contactDetailsList.get(i).getFirstName();
             if (name.equalsIgnoreCase(editName)) {
+            	contactDetailsList.remove(person);
                 writeContact();
                 edited = true;
                 break;
@@ -88,23 +89,11 @@ public class AddressBook {
         if (i < contactDetailsList.size()) {
             contactDetailsList.remove(i);
             System.out.println("Contact Deleted");
-            System.out.println("Remaining contacts in the book isgit");
-            printContact();
+            System.out.println("Remaining contacts in the book igsit");
         }else {
             System.out.println("Contact not find");
         }
 
     }
-    public void printContact() {
-        for (int i = 0; i < contactDetailsList.size(); i++) {
-            System.out.println("Contact Details");
-            System.out.println("Name         : " + contactDetailsList.get(i).getFirstName()+ " " + contactDetailsList.get(i).getLastName() + "\n"
-                             + "Address      : " + contactDetailsList.get(i).getAddress()   + "\n"
-                             + "City         : " + contactDetailsList.get(i).getCity()      + "\n"
-                             + "State        : " + contactDetailsList.get(i).getState()     + "\n"
-                             + "ZipCode      : " + contactDetailsList.get(i).getZipCode()   + "\n"
-                             + "MobileNumber : " + contactDetailsList.get(i).getMobileNumber()  + "\n"
-                             + "EmailId      : " + contactDetailsList.get(i).getEmailId()   + "\n");
-        }
-    }
+
 }
