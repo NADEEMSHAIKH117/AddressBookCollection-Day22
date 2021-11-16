@@ -44,6 +44,18 @@ public class AddressBook {
 		}
 	}
 	
+	public void deleteContact() {
+		System.out.println("Enter the First name of Person to Delete Contact : ");
+		String deleteName = scanner.next();
+		if(deleteName.equalsIgnoreCase(person.getFirstName())) {
+			System.out.println("Deleted " + person.getFirstName() + " details");
+			person = null;
+		} else {
+			System.out.println("The Entered First Name is Not Matched");
+			deleteContact();
+		}
+	}
+	
 	
 	
 	public static void printContact() {
