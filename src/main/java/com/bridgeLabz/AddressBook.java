@@ -75,6 +75,19 @@ public class AddressBook {
             System.out.println("Search result: " + contact);
         }
     }
+    /*
+    Declaring The Count Contacts Method By City Name
+    Using Java Streams To Count The Contacts By using City Name
+    */
+    public void countContactsByUsingCity(String cityName) {
+        long count = 0;
+        long count1 = contactDetailsList.stream().filter(g -> g.getCity().equalsIgnoreCase(cityName)).count();
+        for (ContactDetails contact : contactDetailsList) {
+            count1 = count1 + count;
+        }
+        System.out.println("Contact List :" + count1);
+
+    }
 
     /*
     Declaring The Edit Contact Method
@@ -182,7 +195,7 @@ public class AddressBook {
     public void viewByOptions() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("Enter\n 1. By name\n 2. By city\n 3. By state\n 4. for previous menu");
+            System.out.println("Enter\n 1. By name\n 2. By city\n 3. By state\n 4. Count Contacts\n 0. for previous menu");
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
@@ -202,6 +215,10 @@ public class AddressBook {
                 searchByState(state);
                 break;
                 case 4:
+                	 System.out.println("Enter The Name Of City");
+                     String cityName = scanner.next();
+                     countContactsByUsingCity(cityName);
+                case 0:     
                     return;
                 default:
                     System.out.println("Entered choice is incorrect!.. please enter correct choice");
