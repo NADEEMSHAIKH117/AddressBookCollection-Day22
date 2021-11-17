@@ -179,7 +179,7 @@ public class AddressBook {
         }
     }
 
-    public void searchByOptions() {
+    public void viewByOptions() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Enter\n 1. By name\n 2. By city\n 3. By state\n 4. for previous menu");
@@ -199,7 +199,7 @@ public class AddressBook {
             case 3:
                 System.out.println("Enter state: ");
                 String state = scanner.nextLine();
-                System.out.println(state);
+                searchByState(state);
                 break;
                 case 4:
                     return;
